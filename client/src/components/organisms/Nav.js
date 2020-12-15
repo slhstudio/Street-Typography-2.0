@@ -1,6 +1,9 @@
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 //import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
+import { Flex } from '@rebass/emotion'
+import { AuthContext } from '../../contexts/authContext'
 
 const NavList = styled.ul`
   display: flex;
@@ -25,15 +28,8 @@ const NavList = styled.ul`
   }
 `;
 
-// const Greeting = styled.div.attrs({
-//   className: 'greeting'
-// })`
-//   color: darkcyan;
-//   display: flex;
-//   flex-direction: row;
-// `;
-
 const Nav = () => {
+	const auth = useContext(AuthContext)
 	return (
 		<NavList>
 			<li>
@@ -61,9 +57,17 @@ const Nav = () => {
 			</li>
 
 			<li>
-				<NavLink activeClassName='active' to='/logIn'>
-					Log In
-				</NavLink>
+			{ auth ?
+				<Flex color='darkcyan'>
+					Hi, {auth}!
+					<a href='auth/logout'>
+						Log Out
+					</a>
+				</Flex>
+				: <NavLink activeClassName='active' to='/logIn'>
+						Log In
+					</NavLink>
+			}
 			</li>
 		</NavList>
 	)

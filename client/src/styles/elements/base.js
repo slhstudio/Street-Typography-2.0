@@ -32,7 +32,6 @@ export const Base = css`
     text-decoration: none;
 
     &:hover,
-    &:active,
     &:focus {
       text-decoration: underline;
     }

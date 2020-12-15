@@ -40,10 +40,14 @@ const App = () => {
 									<Home />
 								</Route>
 								<ProtectedRoute path='/add'>
-									<Add />
+									<Route>
+										<Add />
+									</Route>
 								</ProtectedRoute>
 								<ProtectedRoute path='/mine'>
-									<Mine />
+									<Route>
+										<Mine />
+									</Route>
 								</ProtectedRoute>
 								<Route path='/photo/:photo'>
 									<Photo />
