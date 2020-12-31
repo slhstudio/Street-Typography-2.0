@@ -10,7 +10,7 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 require('dotenv').config({ path: '.env' });
 
-app.use(express.static(path.resolve(__dirname, 'build')));
+app.use(express.static(path.resolve(__dirname, 'client', 'build')));
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/app'));
 
@@ -59,7 +59,7 @@ app.get('/locate/near', photoController.mapPhotos);
 app.get('/user', userController.isSignedIn);
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build/index.html'));
 });
 
 module.exports = app;
