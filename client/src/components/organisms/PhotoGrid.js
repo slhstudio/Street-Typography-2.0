@@ -1,9 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
+import { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import styled from '@emotion/styled'
+import { PhotoContext } from '../../contexts/photoContext'
 
-const PhotoGridStyled = styled.ul`
+
+const Grid = styled.ul`
   /*  Here is the fallback layout. It works in every browser,
   even those that don't understand '@supports'. */
     max-width: 500px;
@@ -21,7 +22,7 @@ const PhotoGridStyled = styled.ul`
     margin: 1em auto;
 `;
   
-const PhotoItemStyled = styled.img`
+const GridItem = styled.img`
   /* fallback */
     margin: .2rem 0;
     max-width: 100%;
@@ -40,30 +41,26 @@ const PhotoItemStyled = styled.img`
     box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
 `;
 
-const PhotoGrid = ({ photos, notes }) => {
- 
+const PhotoGrid = () => {
+  const { photos } = useContext(PhotoContext)
   return (
-    <PhotoGridStyled>
-      {photos.map((photo, index) => {
+    <Grid>
+      {photos.map((item, index) => {
         return (
           <li key={index}>
-            <Link to={`/photo/${photo}`} >
-              <PhotoItemStyled 
-                src={`/uploads/${photo}`}
-                alt={`street typography image: ${notes[index]}`}
+            <Link to={`/photo/${item.photo}`} >
+              <GridItem 
+                src={`/uploads/${item.photo}`}
+                alt={`street typography image: ${item.notes}`}
               />
             </Link>
           </li>
         )
       })}
-    </PhotoGridStyled> 
+    </Grid> 
   )
 }
 
-PhotoGrid.propTypes = {
-  photos: PropTypes.arrayOf(PropTypes.string).isRequired,
-  notes: PropTypes.arrayOf(PropTypes.string).isRequired
-}
 
 export default PhotoGrid;
 
