@@ -4,13 +4,17 @@ import Loading from '../atoms/Loading';
 import PhotoGrid from '../organisms/PhotoGrid';
 
 const Home = () => {
-	const { loading } = useContext(PhotoContext)
+	const { loading, error } = useContext(PhotoContext)
 	
-    return (
-      <div>
-        {loading ? <Loading /> : <PhotoGrid />}
-      </div>
-    )
+	return (
+		<div>
+			{loading 
+			? <Loading /> 
+			: error 
+				? <div>{error}</div> 
+				: <PhotoGrid />}
+		</div>
+	)
 }
 
 
