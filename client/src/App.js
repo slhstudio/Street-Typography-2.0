@@ -5,6 +5,7 @@ import { GlobalStyles } from './styles/global'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import ProtectedRoute from './components/atoms/ProtectedRoute'
 import { AuthProvider } from './contexts/authContext'
+import { PhotoProvider } from './contexts/photoContext'
 import Nav from './components/organisms/Nav'
 import Home from './components/pages/Home'
 import Add from './components/pages/Add'
@@ -35,30 +36,33 @@ const App = () => {
 					<Container>	
 						<Nav />
 						<ContentContainer>
+						<PhotoProvider>
 							<Switch>
-								<Route exact path='/'>
-									<Home />
-								</Route>
-								<ProtectedRoute path='/add'>
-									<Route>
-										<Add />
+									<Route exact path='/'>
+										<Home />
 									</Route>
-								</ProtectedRoute>
-								<ProtectedRoute path='/mine'>
-									<Route>
-										<Mine />
+									<ProtectedRoute path='/add'>
+										<Route>
+											<Add />
+										</Route>
+									</ProtectedRoute>
+									<ProtectedRoute path='/mine'>
+										<Route>
+											<Mine />
+										</Route>
+									</ProtectedRoute>
+									<Route path='/photo/:photo'>
+										<Photo />
 									</Route>
-								</ProtectedRoute>
-								<Route path='/photo/:photo'>
-									<Photo />
-								</Route>
-								<Route path='/locator'>
-									<Locator />
-								</Route>
+									<Route path='/locator'>
+										<Locator />
+									</Route>
+							
 								<Route path='/logIn'>
 									<LogIn />
 								</Route>
 							</Switch>
+							</PhotoProvider>
 						</ContentContainer>
 					</Container>
 				</Router>
