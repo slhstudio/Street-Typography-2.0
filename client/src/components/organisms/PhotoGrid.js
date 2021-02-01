@@ -1,8 +1,5 @@
-import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import styled from '@emotion/styled'
-import { PhotoContext } from '../../contexts/photoContext'
-
 
 const Grid = styled.ul`
   /*  Here is the fallback layout. It works in every browser,
@@ -20,8 +17,8 @@ const Grid = styled.ul`
     grid-auto-rows: 200px;
     grid-gap: 1em;
     margin: 1em auto;
-`;
-  
+`
+
 const GridItem = styled.img`
   /* fallback */
     margin: .2rem 0;
@@ -39,17 +36,16 @@ const GridItem = styled.img`
     width: 100%;
     -webkit-box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
     box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
-`;
+`
 
-const PhotoGrid = () => {
-  const { photos } = useContext(PhotoContext)
+const PhotoGrid = ({ photos }) => {
   return (
     <Grid>
       {photos.map((item, index) => {
         return (
           <li key={index}>
-            <Link to={`/photo/${item.photo}`} >
-              <GridItem 
+            <Link to={`/photo/${item.photo}`}>
+              <GridItem
                 src={`/uploads/${item.photo}`}
                 alt={`street typography image: ${item.notes}`}
               />
@@ -57,14 +53,8 @@ const PhotoGrid = () => {
           </li>
         )
       })}
-    </Grid> 
+    </Grid>
   )
 }
 
-
-export default PhotoGrid;
-
-
-
-
-
+export default PhotoGrid

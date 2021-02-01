@@ -4,9 +4,9 @@ import Loading from '../atoms/Loading'
 import PhotoGrid from '../organisms/PhotoGrid'
 
 const Home = () => {
-  const { loading, error } = useContext(PhotoContext)
+  const { photos, loading, error } = useContext(PhotoContext)
 
-  return <div>{loading ? <Loading /> : error ? <div>{error}</div> : <PhotoGrid />}</div>
+  return <>{loading ? <Loading /> : error ? <div>{error}</div> : <PhotoGrid photos={photos} />}</>
 }
 
 export default Home

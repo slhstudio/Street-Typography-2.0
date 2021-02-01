@@ -15,60 +15,56 @@ import LogIn from './components/pages/LogIn'
 import Locator from './components/pages/Locator'
 
 const Container = styled.div`
-  max-width: ${props => props.theme.containerWidth};
-  color: ${props => props.theme.black};
+  max-width: ${(props) => props.theme.containerWidth};
+  color: ${(props) => props.theme.black};
   margin: 0 auto;
   height: 100vh;
-`;
+`
 
 const ContentContainer = styled.div`
-  max-width: ${props => props.theme.contentContainerWidth};
+  max-width: ${(props) => props.theme.contentContainerWidth};
   margin: 0 auto;
   padding: 0 3em 0 3em;
-`;
+`
 
 const App = () => {
-	return (
-		<ThemeProvider theme={Theme}>
-			<Global styles={GlobalStyles} />
-			<AuthProvider>
-				<Router>
-					<Container>	
-						<Nav />
-						<ContentContainer>
-						<PhotoProvider>
-							<Switch>
-									<Route exact path='/'>
-										<Home />
-									</Route>
-									<ProtectedRoute path='/add'>
-										<Route>
-											<Add />
-										</Route>
-									</ProtectedRoute>
-									<ProtectedRoute path='/mine'>
-										<Route>
-											<Mine />
-										</Route>
-									</ProtectedRoute>
-									<Route path='/photo/:photo'>
-										<Photo />
-									</Route>
-									<Route path='/locator'>
-										<Locator />
-									</Route>
-							
-								<Route path='/logIn'>
-									<LogIn />
-								</Route>
-							</Switch>
-							</PhotoProvider>
-						</ContentContainer>
-					</Container>
-				</Router>
-			</AuthProvider>
-		</ThemeProvider>
-	)
+  return (
+    <ThemeProvider theme={Theme}>
+      <Global styles={GlobalStyles} />
+      <AuthProvider>
+        <Router>
+          <Container>
+            <Nav />
+            <ContentContainer>
+              <PhotoProvider>
+                <Switch>
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
+                  <ProtectedRoute path="/add">
+                    <Add />
+                  </ProtectedRoute>
+                  <ProtectedRoute path="/mine">
+                    <Mine />
+                  </ProtectedRoute>
+                  <Route path="/photo/:photo">
+                    <Photo />
+                  </Route>
+                  <Route path="/locator">
+                    <Locator />
+                  </Route>
+
+                  <Route path="/logIn">
+                    <LogIn />
+                  </Route>
+                </Switch>
+              </PhotoProvider>
+            </ContentContainer>
+          </Container>
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
+  )
 }
 
 export default App
