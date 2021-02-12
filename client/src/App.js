@@ -10,7 +10,7 @@ import Nav from './components/organisms/Nav'
 import Home from './components/pages/Home'
 import Add from './components/pages/Add'
 import Mine from './components/pages/Mine'
-import Photo from './components/organisms/Photo'
+import PhotoWithMap from './components/organisms/PhotoWithMap'
 import LogIn from './components/pages/LogIn'
 import Locator from './components/pages/Locator'
 
@@ -48,7 +48,7 @@ const App = () => {
                     <Mine />
                   </ProtectedRoute>
                   <Route path="/photo/:photo">
-                    <Photo />
+                    <PhotoWithMap />
                   </Route>
                   <Route path="/locator">
                     <Locator />

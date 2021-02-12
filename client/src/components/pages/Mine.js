@@ -17,8 +17,8 @@ const Mine = () => {
         const pics = await findMine()
         setLoading(false)
         setPhotos(pics.data)
-      } catch (e) {
-        console.warn(e.message)
+      } catch (error) {
+        console.warn(error.message)
         setError('Please try again.')
       }
     }

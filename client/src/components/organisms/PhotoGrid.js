@@ -44,7 +44,7 @@ const PhotoGrid = ({ photos }) => {
       {photos.map((item, index) => {
         return (
           <li key={index}>
-            <Link to={`/photo/${item.photo}`}>
+            <Link to={{ pathname: `/photo/${item.photo}`, state: { item } }}>
               <GridItem
                 src={`/uploads/${item.photo}`}
                 alt={`street typography image: ${item.notes}`}
