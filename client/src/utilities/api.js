@@ -23,7 +23,6 @@ export async function findThisPhoto(photo, error) {
 
 export async function submitPhotos(data, error) {
   const add = await axios.post('/addPhoto', data).catch(error)
-  console.log(add.data)
   return add.data
 }
 

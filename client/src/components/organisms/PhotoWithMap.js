@@ -5,6 +5,7 @@ import { Box } from '@rebass/emotion'
 import { AuthContext } from '../../contexts/authContext'
 import Photo from '../molecules/Photo'
 import Map from '../molecules/Map'
+import Edit from '../molecules/Edit'
 
 const Container = styled(Box)`
   max-width: 800px;
@@ -17,9 +18,12 @@ const PhotoWithMap = () => {
   //not using api func findThisPhoto anymore
   //const { photo } = useParams()
   //const pic = await findThisPhoto(photo)
+
+  //get photo that is passed via Link
   const {
     state: { item },
   } = useLocation()
+
   const [lng, lat] = item.location.coordinates
 
   const staticMap = ([lng, lat]) => {
@@ -33,13 +37,9 @@ const PhotoWithMap = () => {
       <Photo photo={item.photo} />
       <Map map={staticMap([lng, lat])} />
       {user && user === item.author ? (
-        <div>
-          EDIT
-          {/* <Edit 
-                info={props.notes}
-                photo={props.photo}
-              /> */}
-        </div>
+        <Box>
+          <Edit info={item.notes} photo={item.photo} />
+        </Box>
       ) : (
         <p>{item.notes}</p>
       )}
